@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MRes Programs – University of Gloucestershire</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --navy: #0d1f3c;
+    --deep: #091629;
+    --gold: #c9a84c;
+    --gold-light: #e8c96f;
+    --cream: #f8f3e8;
+    --white: #ffffff;
+    --muted: #8fa3b8;
+    --teal: #1a7a6e;
+  }
+
+  body {
+    background: #0a0f1a;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 100vh;
+    padding: 40px 20px;
+    font-family: 'DM Sans', sans-serif;
+  }
+
+  .flyer {
+    width: 760px;
+    background: var(--navy);
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 40px 100px rgba(0,0,0,0.7), 0 0 0 1px rgba(201,168,76,0.2);
+  }
+
+  /* ─── decorative background geometry ─── */
+  .flyer::before {
+    content: '';
+    position: absolute;
+    top: -120px; right: -120px;
+    width: 420px; height: 420px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(201,168,76,0.12) 0%, transparent 65%);
+    pointer-events: none;
+  }
+  .flyer::after {
+    content: '';
+    position: absolute;
+    bottom: -80px; left: -80px;
+    width: 320px; height: 320px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(26,122,110,0.15) 0%, transparent 65%);
+    pointer-events: none;
+  }
+
+  /* ─── HEADER ─── */
+  .header {
+    background: linear-gradient(135deg, var(--deep) 0%, #122848 100%);
+    padding: 44px 48px 36px;
+    position: relative;
+    border-bottom: 2px solid var(--gold);
+  }
+
+  .header-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 22px;
+  }
+
+  .uni-badge {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+  }
+
+  .uni-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gold);
+  }
+
+  .uni-location {
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  .deadline-badge {
+    background: var(--gold);
+    color: var(--deep);
+    padding: 8px 16px;
+    text-align: center;
+    clip-path: polygon(8px 0%, 100% 0%, calc(100% - 8px) 100%, 0% 100%);
+  }
+
+  .deadline-label {
+    font-size: 8px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-weight: 600;
+    display: block;
+    margin-bottom: 2px;
+  }
+
+  .deadline-date {
+    font-family: 'Playfair Display', serif;
+    font-size: 16px;
+    font-weight: 900;
+    line-height: 1;
+    display: block;
+  }
+
+  .header-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 52px;
+    font-weight: 900;
+    line-height: 1;
+    color: var(--white);
+    letter-spacing: -1px;
+  }
+
+  .header-title span {
+    color: var(--gold-light);
+    font-style: italic;
+  }
+
+  .header-sub {
+    font-size: 13px;
+    color: var(--muted);
+    letter-spacing: 1px;
+    margin-top: 8px;
+  }
+
+  /* ─── PERKS STRIP ─── */
+  .perks-strip {
+    background: var(--gold);
+    padding: 12px 48px;
+    display: flex;
+    gap: 32px;
+    align-items: center;
+  }
+
+  .perk {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--deep);
+    font-size: 11.5px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    white-space: nowrap;
+  }
+
+  .perk-icon {
+    font-size: 16px;
+  }
+
+  .perk-divider {
+    width: 1px;
+    height: 20px;
+    background: rgba(9,22,41,0.3);
+  }
+
+  /* ─── BODY ─── */
+  .body {
+    padding: 40px 48px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .section-label {
+    font-size: 9px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gold);
+    font-weight: 600;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .section-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: rgba(201,168,76,0.25);
+  }
+
+  /* ─── PROGRAMS GRID ─── */
+  .programs-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    margin-bottom: 36px;
+  }
+
+  .program-card {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(201,168,76,0.2);
+    padding: 20px 22px;
+    position: relative;
+    transition: all 0.3s ease;
+    cursor: default;
+  }
+
+  .program-card::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 3px;
+    background: var(--gold);
+  }
+
+  .program-card:hover {
+    background: rgba(201,168,76,0.06);
+    border-color: rgba(201,168,76,0.4);
+    transform: translateY(-2px);
+  }
+
+  .program-level {
+    font-size: 9px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--gold);
+    font-weight: 500;
+    margin-bottom: 5px;
+  }
+
+  .program-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--white);
+    line-height: 1.3;
+  }
+
+  .program-tags {
+    display: flex;
+    gap: 6px;
+    margin-top: 10px;
+    flex-wrap: wrap;
+  }
+
+  .tag {
+    font-size: 9px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    font-weight: 600;
+    padding: 3px 8px;
+    border-radius: 2px;
+  }
+
+  .tag-spouse {
+    background: rgba(26,122,110,0.25);
+    color: #5ecfc2;
+    border: 1px solid rgba(26,122,110,0.4);
+  }
+
+  .tag-noproposal {
+    background: rgba(201,168,76,0.15);
+    color: var(--gold-light);
+    border: 1px solid rgba(201,168,76,0.3);
+  }
+
+  /* ─── FEES SECTION ─── */
+  .fees-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    margin-bottom: 36px;
+  }
+
+  .fee-box {
+    background: linear-gradient(135deg, rgba(201,168,76,0.1) 0%, rgba(201,168,76,0.04) 100%);
+    border: 1px solid rgba(201,168,76,0.3);
+    padding: 22px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .fee-box::after {
+    content: '';
+    position: absolute;
+    bottom: -20px; right: -20px;
+    width: 80px; height: 80px;
+    border: 1px solid rgba(201,168,76,0.15);
+    border-radius: 50%;
+  }
+
+  .fee-mode {
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 8px;
+    font-weight: 500;
+  }
+
+  .fee-amount {
+    font-family: 'Playfair Display', serif;
+    font-size: 34px;
+    font-weight: 900;
+    color: var(--gold-light);
+    line-height: 1;
+  }
+
+  .fee-period {
+    font-size: 11px;
+    color: var(--muted);
+    margin-top: 4px;
+  }
+
+  .fee-years {
+    font-size: 10px;
+    color: rgba(143,163,184,0.7);
+    margin-top: 3px;
+  }
+
+  /* ─── HIGHLIGHTS ─── */
+  .highlights {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+    margin-bottom: 36px;
+  }
+
+  .highlight {
+    text-align: center;
+    padding: 18px 12px;
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.06);
+  }
+
+  .highlight-icon {
+    font-size: 24px;
+    margin-bottom: 8px;
+    display: block;
+  }
+
+  .highlight-title {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--white);
+    margin-bottom: 4px;
+  }
+
+  .highlight-desc {
+    font-size: 10.5px;
+    color: var(--muted);
+    line-height: 1.5;
+  }
+
+  /* ─── CTA STRIP ─── */
+  .cta-strip {
+    background: linear-gradient(135deg, var(--deep) 0%, #0d2240 100%);
+    border: 1px solid rgba(201,168,76,0.3);
+    padding: 24px 28px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+  }
+
+  .cta-text {
+    flex: 1;
+  }
+
+  .cta-headline {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 4px;
+  }
+
+  .cta-sub {
+    font-size: 11px;
+    color: var(--muted);
+  }
+
+  .cta-btn {
+    background: var(--gold);
+    color: var(--deep);
+    padding: 12px 28px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    text-decoration: none;
+    display: inline-block;
+    white-space: nowrap;
+    clip-path: polygon(10px 0%, 100% 0%, calc(100% - 10px) 100%, 0% 100%);
+  }
+
+  /* ─── FOOTER ─── */
+  .footer {
+    padding: 18px 48px;
+    border-top: 1px solid rgba(201,168,76,0.15);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: var(--deep);
+  }
+
+  .footer-left {
+    font-size: 10px;
+    color: var(--muted);
+    letter-spacing: 1px;
+  }
+
+  .footer-url {
+    font-size: 10px;
+    color: var(--gold);
+    letter-spacing: 0.5px;
+  }
+
+  .footer-divider {
+    width: 1px;
+    height: 16px;
+    background: rgba(255,255,255,0.1);
+  }
+
+  /* ─── corner ornaments ─── */
+  .corner {
+    position: absolute;
+    width: 28px;
+    height: 28px;
+  }
+  .corner-tl { top: 10px; left: 10px; border-top: 2px solid var(--gold); border-left: 2px solid var(--gold); }
+  .corner-tr { top: 10px; right: 10px; border-top: 2px solid var(--gold); border-right: 2px solid var(--gold); }
+  .corner-bl { bottom: 10px; left: 10px; border-bottom: 2px solid var(--gold); border-left: 2px solid var(--gold); }
+  .corner-br { bottom: 10px; right: 10px; border-bottom: 2px solid var(--gold); border-right: 2px solid var(--gold); }
+
+  /* animations */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .flyer > * { animation: fadeUp 0.6s ease forwards; }
+  .header     { animation-delay: 0.05s; }
+  .perks-strip{ animation-delay: 0.15s; }
+  .body       { animation-delay: 0.25s; }
+  .footer     { animation-delay: 0.35s; }
+</style>
+</head>
+<body>
+
+<div class="flyer">
+  <!-- Corner ornaments -->
+  <div class="corner corner-tl"></div>
+  <div class="corner corner-tr"></div>
+  <div class="corner corner-bl"></div>
+  <div class="corner corner-br"></div>
+
+  <!-- ── HEADER ── -->
+  <div class="header">
+    <div class="header-top">
+      <div class="uni-badge">
+        <span class="uni-name">University of Gloucestershire</span>
+        <span class="uni-location">Cheltenham &amp; Gloucester, United Kingdom</span>
+      </div>
+      <div class="deadline-badge">
+        <span class="deadline-label">Apply Before</span>
+        <span class="deadline-date">30 April</span>
+      </div>
+    </div>
+    <div class="header-title">Professional<br><span>MRes</span> Programs</div>
+    <p class="header-sub">Master of Research &nbsp;·&nbsp; International Postgraduate &nbsp;·&nbsp; 2026/27 Intake</p>
+  </div>
+
+  <!-- ── PERKS STRIP ── -->
+  <div class="perks-strip">
+    <div class="perk"><span class="perk-icon">💑</span> Spouses &amp; Dependents Allowed</div>
+    <div class="perk-divider"></div>
+    <div class="perk"><span class="perk-icon">📋</span> No Research Proposal Required</div>
+    <div class="perk-divider"></div>
+    <div class="perk"><span class="perk-icon">🎓</span> UK Globally Recognised Degree</div>
+  </div>
+
+  <!-- ── BODY ── -->
+  <div class="body">
+
+    <!-- Programs -->
+    <div class="section-label">Available Programmes</div>
+    <div class="programs-grid">
+
+      <div class="program-card">
+        <div class="program-level">Professional MRes</div>
+        <div class="program-name">International Business</div>
+        <div class="program-tags">
+          <span class="tag tag-spouse">✓ Spouse Visa</span>
+          <span class="tag tag-noproposal">No Proposal Needed</span>
+        </div>
+      </div>
+
+      <div class="program-card">
+        <div class="program-level">Professional MRes</div>
+        <div class="program-name">Education</div>
+        <div class="program-tags">
+          <span class="tag tag-spouse">✓ Spouse Visa</span>
+          <span class="tag tag-noproposal">No Proposal Needed</span>
+        </div>
+      </div>
+
+      <div class="program-card">
+        <div class="program-level">Professional MRes</div>
+        <div class="program-name">Construction Project Management</div>
+        <div class="program-tags">
+          <span class="tag tag-spouse">✓ Spouse Visa</span>
+          <span class="tag tag-noproposal">No Proposal Needed</span>
+        </div>
+      </div>
+
+      <div class="program-card">
+        <div class="program-level">Professional MRes</div>
+        <div class="program-name">Communication, PR &amp; the Media</div>
+        <div class="program-tags">
+          <span class="tag tag-spouse">✓ Spouse Visa</span>
+          <span class="tag tag-noproposal">No Proposal Needed</span>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Fees -->
+    <div class="section-label">International Tuition Fees 2026/27</div>
+    <div class="fees-row">
+      <div class="fee-box">
+        <div class="fee-mode">Full-Time Study</div>
+        <div class="fee-amount">£13,425</div>
+        <div class="fee-period">per year</div>
+        <div class="fee-years">Years 1 – 2</div>
+      </div>
+      <div class="fee-box">
+        <div class="fee-mode">Part-Time Study</div>
+        <div class="fee-amount">£8,950</div>
+        <div class="fee-period">per year</div>
+        <div class="fee-years">Years 1 – 3</div>
+      </div>
+    </div>
+
+    <!-- Highlights -->
+    <div class="section-label">Why Choose Gloucestershire</div>
+    <div class="highlights">
+      <div class="highlight">
+        <span class="highlight-icon">🌍</span>
+        <div class="highlight-title">Spouse Visa Support</div>
+        <div class="highlight-desc">Bring your partner &amp; family to the UK on a dependent visa</div>
+      </div>
+      <div class="highlight">
+        <span class="highlight-icon">📝</span>
+        <div class="highlight-title">Easy Application</div>
+        <div class="highlight-desc">No research proposal needed — apply straightaway with your qualifications</div>
+      </div>
+      <div class="highlight">
+        <span class="highlight-icon">🏛️</span>
+        <div class="highlight-title">Research Degree</div>
+        <div class="highlight-desc">A prestigious Master of Research qualification recognised globally</div>
+      </div>
+    </div>
+
+    <!-- CTA -->
+    <div class="cta-strip">
+      <div class="cta-text">
+        <div class="cta-headline">Deadline: 30th April — Don't Miss Out</div>
+        <div class="cta-sub">Limited seats available &nbsp;·&nbsp; Early applications encouraged &nbsp;·&nbsp; www.glos.ac.uk</div>
+      </div>
+      <a class="cta-btn" href="https://www.glos.ac.uk/study/postgraduate-degrees/postgraduate-research-degrees/" target="_blank">Apply Now →</a>
+    </div>
+
+  </div><!-- /body -->
+
+  <!-- ── FOOTER ── -->
+  <div class="footer">
+    <span class="footer-left">University of Gloucestershire &nbsp;·&nbsp; Cheltenham GL50 2RH, UK</span>
+    <div class="footer-divider"></div>
+    <span class="footer-url">www.glos.ac.uk</span>
+  </div>
+
+</div>
+
+</body>
+</html>
