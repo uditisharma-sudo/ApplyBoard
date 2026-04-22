@@ -1,9 +1,509 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>My Website</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Loughborough University London</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --maroon: #8B0000;
+      --gold: #C9A84C;
+      --gold-light: #f0d080;
+      --dark: #0e0e0e;
+      --off-white: #f8f4ef;
+      --light-gray: #e8e2da;
+      --text: #1a1a1a;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--off-white);
+      color: var(--text);
+      overflow-x: hidden;
+    }
+
+    /* ── HERO ── */
+    .hero {
+      position: relative;
+      background: var(--dark);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 0 6vw 8vh;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 70% 60% at 80% 30%, rgba(139,0,0,0.35) 0%, transparent 70%),
+        radial-gradient(ellipse 50% 40% at 10% 80%, rgba(201,168,76,0.15) 0%, transparent 60%);
+    }
+
+    .hero-grid {
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(201,168,76,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(201,168,76,0.04) 1px, transparent 1px);
+      background-size: 60px 60px;
+    }
+
+    .hero-tag {
+      font-size: 0.7rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--gold);
+      font-weight: 600;
+      margin-bottom: 1.5rem;
+      position: relative;
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+    }
+    .hero-tag::before {
+      content: '';
+      display: inline-block;
+      width: 32px;
+      height: 1px;
+      background: var(--gold);
+    }
+
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(3rem, 8vw, 7rem);
+      font-weight: 900;
+      line-height: 1;
+      color: #fff;
+      position: relative;
+      max-width: 900px;
+    }
+
+    .hero h1 span {
+      color: var(--gold);
+    }
+
+    .hero-sub {
+      font-size: clamp(1rem, 2vw, 1.25rem);
+      font-weight: 300;
+      color: rgba(255,255,255,0.65);
+      max-width: 540px;
+      margin-top: 1.5rem;
+      line-height: 1.7;
+      position: relative;
+    }
+
+    .hero-badges {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 2.5rem;
+      position: relative;
+    }
+
+    .badge {
+      border: 1px solid rgba(201,168,76,0.4);
+      color: var(--gold-light);
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      padding: 0.45rem 1rem;
+      border-radius: 100px;
+      backdrop-filter: blur(4px);
+      background: rgba(201,168,76,0.06);
+    }
+
+    .scroll-hint {
+      position: absolute;
+      bottom: 2.5rem;
+      right: 6vw;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.4rem;
+      color: rgba(255,255,255,0.3);
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+    }
+    .scroll-hint span {
+      display: block;
+      width: 1px;
+      height: 48px;
+      background: linear-gradient(to bottom, rgba(201,168,76,0.6), transparent);
+      animation: scrollLine 2s ease-in-out infinite;
+    }
+    @keyframes scrollLine {
+      0%,100% { opacity: 0.3; transform: scaleY(1); }
+      50% { opacity: 1; transform: scaleY(0.6); }
+    }
+
+    /* ── FACTS STRIP ── */
+    .facts-strip {
+      background: var(--maroon);
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0;
+    }
+
+    .fact {
+      flex: 1 1 200px;
+      padding: 2.5rem 2rem;
+      text-align: center;
+      border-right: 1px solid rgba(255,255,255,0.1);
+    }
+    .fact:last-child { border-right: none; }
+
+    .fact-value {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: var(--gold-light);
+      display: block;
+      margin-bottom: 0.35rem;
+    }
+
+    .fact-label {
+      font-size: 0.7rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.65);
+      font-weight: 500;
+    }
+
+    /* ── SECTION WRAPPER ── */
+    .section {
+      padding: 7rem 6vw;
+    }
+
+    .section-label {
+      font-size: 0.65rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--maroon);
+      font-weight: 700;
+      margin-bottom: 0.8rem;
+    }
+
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 700;
+      line-height: 1.15;
+      color: var(--dark);
+      max-width: 600px;
+    }
+
+    /* ── TUITION ── */
+    .tuition-section {
+      background: var(--dark);
+    }
+
+    .tuition-section .section-label { color: var(--gold); }
+    .tuition-section .section-title { color: #fff; }
+
+    .tuition-cards {
+      display: flex;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+      margin-top: 3rem;
+    }
+
+    .tuition-card {
+      flex: 1 1 280px;
+      border: 1px solid rgba(201,168,76,0.2);
+      border-radius: 4px;
+      padding: 2.5rem;
+      position: relative;
+      overflow: hidden;
+      background: rgba(255,255,255,0.02);
+    }
+
+    .tuition-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--maroon), var(--gold));
+    }
+
+    .tuition-card .price {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.6rem;
+      font-weight: 700;
+      color: var(--gold-light);
+      line-height: 1;
+    }
+
+    .tuition-card .price-label {
+      font-size: 0.7rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.4);
+      margin-top: 0.5rem;
+      margin-bottom: 1.2rem;
+      font-weight: 500;
+    }
+
+    .tuition-card p {
+      font-size: 0.88rem;
+      line-height: 1.7;
+      color: rgba(255,255,255,0.55);
+    }
+
+    /* ── WHY SECTION ── */
+    .why-section { background: var(--off-white); }
+
+    .why-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 2px;
+      margin-top: 3rem;
+      background: var(--light-gray);
+    }
+
+    .why-card {
+      background: var(--off-white);
+      padding: 2.5rem 2rem;
+      position: relative;
+      transition: background 0.3s;
+    }
+    .why-card:hover { background: #fff; }
+
+    .why-number {
+      font-family: 'Playfair Display', serif;
+      font-size: 4rem;
+      font-weight: 900;
+      color: rgba(139,0,0,0.08);
+      line-height: 1;
+      position: absolute;
+      top: 1rem;
+      right: 1.5rem;
+    }
+
+    .why-card h3 {
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--maroon);
+      margin-bottom: 0.8rem;
+      letter-spacing: 0.02em;
+    }
+
+    .why-card p {
+      font-size: 0.875rem;
+      line-height: 1.75;
+      color: #555;
+      font-weight: 300;
+    }
+
+    /* ── CTA ── */
+    .cta-section {
+      background: var(--maroon);
+      text-align: center;
+      padding: 6rem 6vw;
+    }
+
+    .cta-section .section-label { color: rgba(255,255,255,0.5); }
+    .cta-section h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 1rem;
+    }
+    .cta-section p {
+      font-size: 1rem;
+      color: rgba(255,255,255,0.6);
+      max-width: 480px;
+      margin: 0 auto 2.5rem;
+      line-height: 1.7;
+      font-weight: 300;
+    }
+
+    .cta-btn {
+      display: inline-block;
+      background: var(--gold);
+      color: var(--dark);
+      text-decoration: none;
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      padding: 1rem 2.8rem;
+      border-radius: 2px;
+      transition: background 0.25s, transform 0.2s;
+    }
+    .cta-btn:hover {
+      background: var(--gold-light);
+      transform: translateY(-2px);
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--dark);
+      padding: 2.5rem 6vw;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+      border-top: 1px solid rgba(255,255,255,0.05);
+    }
+
+    footer p {
+      font-size: 0.75rem;
+      color: rgba(255,255,255,0.25);
+    }
+
+    footer a {
+      font-size: 0.75rem;
+      color: var(--gold);
+      text-decoration: none;
+      letter-spacing: 0.05em;
+    }
+    footer a:hover { text-decoration: underline; }
+
+    /* ── ANIMATIONS ── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: none;
+    }
+
+    @media (max-width: 600px) {
+      .hero { min-height: 90vh; padding-bottom: 6vh; }
+      .fact { flex: 1 1 140px; border-right: none; border-bottom: 1px solid rgba(255,255,255,0.1); }
+      footer { flex-direction: column; text-align: center; }
+    }
+  </style>
 </head>
 <body>
-    <h1>Hello World</h1>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-grid"></div>
+  <div class="hero-tag">Queen Elizabeth Olympic Park · London</div>
+  <h1>Loughborough<br/><span>University</span><br/>London</h1>
+  <p class="hero-sub">Unlocking Potential in the Heart of the Capital — a premier postgraduate destination where academic excellence meets industry.</p>
+  <div class="hero-badges">
+    <span class="badge">Top 10 UK Institution</span>
+    <span class="badge">#1 World for Sport (QS 2017–2024)</span>
+    <span class="badge">35+ Countries Represented</span>
+  </div>
+  <div class="scroll-hint"><span></span>Scroll</div>
+</section>
+
+<!-- FAST FACTS -->
+<div class="facts-strip">
+  <div class="fact">
+    <span class="fact-value">7th</span>
+    <span class="fact-label">UK Ranking (CUG 2025)</span>
+  </div>
+  <div class="fact">
+    <span class="fact-value">#1</span>
+    <span class="fact-label">World for Sport (QS)</span>
+  </div>
+  <div class="fact">
+    <span class="fact-value">35+</span>
+    <span class="fact-label">Student Nationalities</span>
+  </div>
+  <div class="fact">
+    <span class="fact-value">PG</span>
+    <span class="fact-label">Postgraduate Focused</span>
+  </div>
+</div>
+
+<!-- TUITION -->
+<section class="section tuition-section">
+  <div class="reveal">
+    <div class="section-label">Fees 2025/26</div>
+    <h2 class="section-title">Transparent Tuition Fees</h2>
+  </div>
+  <div class="tuition-cards">
+    <div class="tuition-card reveal">
+      <div class="price">£25,950</div>
+      <div class="price-label">Undergraduate · Loughborough Campus</div>
+      <p>Available at the Loughborough main campus for undergraduate programmes.</p>
+    </div>
+    <div class="tuition-card reveal">
+      <div class="price">£26,300</div>
+      <div class="price-label">Postgraduate · London Campus</div>
+      <p>Loughborough London primarily offers postgraduate taught and research degrees at Here East, Queen Elizabeth Olympic Park.</p>
+    </div>
+  </div>
+</section>
+
+<!-- WHY CHOOSE -->
+<section class="section why-section">
+  <div class="reveal">
+    <div class="section-label">Why Choose Us</div>
+    <h2 class="section-title">Four Reasons to Choose Loughborough London</h2>
+  </div>
+  <div class="why-grid">
+    <div class="why-card reveal">
+      <span class="why-number">01</span>
+      <h3>Innovation Focused</h3>
+      <p>Collaborative projects built around real-world business challenges, preparing you to lead from day one.</p>
+    </div>
+    <div class="why-card reveal">
+      <span class="why-number">02</span>
+      <h3>Career-Driven</h3>
+      <p>Programmes designed hand-in-hand with industry leaders to ensure outstanding graduate employability.</p>
+    </div>
+    <div class="why-card reveal">
+      <span class="why-number">03</span>
+      <h3>Unique Environment</h3>
+      <p>Embedded in a tech and creative cluster alongside companies like BT Sport and Plexal on the Olympic Park.</p>
+    </div>
+    <div class="why-card reveal">
+      <span class="why-number">04</span>
+      <h3>Simplicity &amp; Access</h3>
+      <p>Through the ApplyBoard platform, find the perfect programme and manage your entire application in one place.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+  <div class="reveal">
+    <div class="section-label">Apply Today</div>
+    <h2>Ready to Unlock Your Potential?</h2>
+    <p>Explore programmes and start your application through ApplyBoard — your gateway to Loughborough University London.</p>
+    <a href="https://www.applyboard.com" target="_blank" rel="noopener noreferrer" class="cta-btn">Explore Programs on ApplyBoard</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>© 2025 Loughborough University London · Here East, Queen Elizabeth Olympic Park</p>
+  <a href="https://www.lboro.ac.uk/london/" target="_blank" rel="noopener noreferrer">lboro.ac.uk/london ↗</a>
+</footer>
+
+<script>
+  // Scroll reveal
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => entry.target.classList.add('visible'), i * 80);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15 });
+  reveals.forEach(el => observer.observe(el));
+</script>
 </body>
 </html>
