@@ -1,0 +1,770 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MRes Programs – University of Gloucestershire</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,700;0,900;1,300;1,700&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --forest: #1b4332;
+  --forest-mid: #2d6a4f;
+  --forest-light: #40916c;
+  --lime: #b7e4c7;
+  --cream: #faf7f0;
+  --warm: #f0e9d6;
+  --amber: #e07a2f;
+  --amber-light: #f4a460;
+  --ink: #1a1a18;
+  --smoke: #6b6b5e;
+  --white: #ffffff;
+}
+
+body {
+  background: #e8e2d4;
+  font-family: 'Outfit', sans-serif;
+  display: flex;
+  justify-content: center;
+  padding: 48px 20px;
+  min-height: 100vh;
+}
+
+/* ── FLYER SHELL ── */
+.flyer {
+  width: 780px;
+  background: var(--cream);
+  position: relative;
+  overflow: hidden;
+  box-shadow: 12px 12px 0 #1b4332, 20px 20px 0 rgba(27,67,50,0.2);
+}
+
+/* ── BIG BG NUMBER ── */
+.bg-number {
+  position: absolute;
+  top: -20px; right: -10px;
+  font-family: 'Fraunces', serif;
+  font-size: 280px;
+  font-weight: 900;
+  color: rgba(27,67,50,0.05);
+  line-height: 1;
+  pointer-events: none;
+  user-select: none;
+  letter-spacing: -10px;
+}
+
+/* ── TOP BAR ── */
+.top-bar {
+  background: var(--forest);
+  padding: 10px 44px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.top-bar-left {
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--lime);
+}
+
+.top-bar-right {
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 2px;
+  color: rgba(183,228,199,0.6);
+}
+
+/* ── HERO ── */
+.hero {
+  padding: 52px 44px 44px;
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 24px;
+  align-items: end;
+  border-bottom: 3px solid var(--forest);
+}
+
+.hero-left {}
+
+.hero-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--amber);
+  color: var(--white);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  padding: 5px 14px;
+  margin-bottom: 20px;
+}
+
+.hero-eyebrow::before {
+  content: '●';
+  font-size: 6px;
+}
+
+.hero-headline {
+  font-family: 'Fraunces', serif;
+  font-size: 72px;
+  font-weight: 900;
+  color: var(--forest);
+  line-height: 0.9;
+  letter-spacing: -2px;
+  margin-bottom: 6px;
+}
+
+.hero-headline em {
+  font-style: italic;
+  color: var(--amber);
+}
+
+.hero-sub {
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--smoke);
+  margin-top: 16px;
+}
+
+.hero-sub span {
+  margin: 0 8px;
+  color: var(--forest-light);
+}
+
+/* Deadline pill */
+.deadline-pill {
+  background: var(--forest);
+  color: var(--cream);
+  padding: 24px 20px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-width: 110px;
+  position: relative;
+}
+
+.deadline-pill::after {
+  content: '';
+  position: absolute;
+  inset: 4px;
+  border: 1px dashed rgba(183,228,199,0.3);
+  pointer-events: none;
+}
+
+.dl-label {
+  font-size: 8px;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: var(--lime);
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.dl-month {
+  font-family: 'Fraunces', serif;
+  font-size: 42px;
+  font-weight: 900;
+  line-height: 1;
+  color: var(--white);
+}
+
+.dl-month-name {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--lime);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.dl-note {
+  font-size: 8px;
+  color: rgba(183,228,199,0.5);
+  letter-spacing: 1px;
+  margin-top: 4px;
+}
+
+/* ── PERKS ROW ── */
+.perks-row {
+  background: var(--amber);
+  padding: 14px 44px;
+  display: flex;
+  align-items: center;
+  gap: 0;
+}
+
+.perk-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex: 1;
+  padding: 0 20px;
+}
+
+.perk-item:first-child { padding-left: 0; }
+.perk-item:last-child  { padding-right: 0; }
+
+.perk-item + .perk-item {
+  border-left: 1px solid rgba(255,255,255,0.35);
+}
+
+.perk-icon-wrap {
+  width: 32px;
+  height: 32px;
+  background: rgba(255,255,255,0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 15px;
+  flex-shrink: 0;
+}
+
+.perk-text strong {
+  display: block;
+  font-size: 11.5px;
+  font-weight: 700;
+  color: var(--white);
+  line-height: 1.2;
+}
+
+.perk-text small {
+  font-size: 9.5px;
+  color: rgba(255,255,255,0.75);
+  font-weight: 400;
+}
+
+/* ── MAIN BODY ── */
+.body {
+  display: grid;
+  grid-template-columns: 1fr 240px;
+  gap: 0;
+}
+
+/* ── LEFT COLUMN ── */
+.col-left {
+  padding: 36px 44px 36px 44px;
+  border-right: 2px solid var(--forest);
+}
+
+.section-head {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.section-head-label {
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--forest);
+}
+
+.section-head-line {
+  flex: 1;
+  height: 2px;
+  background: var(--forest);
+}
+
+/* Programs list */
+.program-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 32px;
+}
+
+.program-item {
+  display: flex;
+  align-items: stretch;
+  background: var(--white);
+  border: 1.5px solid #ddd8cc;
+  overflow: hidden;
+  transition: border-color 0.2s, transform 0.2s;
+  cursor: default;
+}
+
+.program-item:hover {
+  border-color: var(--forest-mid);
+  transform: translateX(4px);
+}
+
+.program-num {
+  background: var(--forest);
+  color: var(--lime);
+  font-family: 'Fraunces', serif;
+  font-size: 22px;
+  font-weight: 900;
+  width: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.program-details {
+  padding: 14px 16px;
+  flex: 1;
+}
+
+.program-cat {
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--smoke);
+  margin-bottom: 3px;
+}
+
+.program-title {
+  font-family: 'Fraunces', serif;
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.2;
+}
+
+.program-badges {
+  display: flex;
+  gap: 6px;
+  margin-top: 8px;
+}
+
+.badge {
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  padding: 3px 9px;
+  text-transform: uppercase;
+}
+
+.badge-green {
+  background: #d8f3dc;
+  color: var(--forest);
+  border: 1px solid #b7e4c7;
+}
+
+.badge-amber {
+  background: #fde8d0;
+  color: #b5521a;
+  border: 1px solid #f4a460;
+}
+
+/* Highlights */
+.highlights-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 10px;
+}
+
+.highlight-box {
+  border: 1.5px solid #ddd8cc;
+  padding: 14px 12px;
+  background: var(--warm);
+  text-align: center;
+}
+
+.h-icon { font-size: 20px; margin-bottom: 6px; display: block; }
+
+.h-title {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--forest);
+  margin-bottom: 4px;
+}
+
+.h-desc {
+  font-size: 9.5px;
+  color: var(--smoke);
+  line-height: 1.5;
+}
+
+/* ── RIGHT COLUMN ── */
+.col-right {
+  display: flex;
+  flex-direction: column;
+  background: var(--forest);
+}
+
+/* Fees block */
+.fees-block {
+  padding: 32px 24px;
+  flex: 1;
+}
+
+.fees-title {
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--lime);
+  margin-bottom: 24px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid rgba(183,228,199,0.25);
+}
+
+.fee-card {
+  margin-bottom: 20px;
+}
+
+.fee-mode {
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: rgba(183,228,199,0.6);
+  margin-bottom: 4px;
+}
+
+.fee-amount {
+  font-family: 'Fraunces', serif;
+  font-size: 42px;
+  font-weight: 900;
+  color: var(--white);
+  line-height: 1;
+}
+
+.fee-amount sup {
+  font-size: 18px;
+  vertical-align: super;
+  font-weight: 600;
+}
+
+.fee-detail {
+  font-size: 10px;
+  color: rgba(183,228,199,0.5);
+  margin-top: 3px;
+}
+
+.fee-divider {
+  height: 1px;
+  background: rgba(183,228,199,0.15);
+  margin: 20px 0;
+}
+
+/* why list */
+.why-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 0 24px 28px;
+}
+
+.why-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.why-dot {
+  width: 6px;
+  height: 6px;
+  background: var(--amber);
+  border-radius: 50%;
+  margin-top: 5px;
+  flex-shrink: 0;
+}
+
+.why-text {
+  font-size: 11px;
+  color: rgba(183,228,199,0.75);
+  line-height: 1.5;
+}
+
+.why-text strong {
+  color: var(--white);
+  display: block;
+  font-size: 12px;
+  font-weight: 600;
+  margin-bottom: 1px;
+}
+
+/* CTA block */
+.cta-block {
+  background: var(--amber);
+  padding: 22px 24px;
+  text-align: center;
+}
+
+.cta-small {
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.75);
+  margin-bottom: 6px;
+}
+
+.cta-big {
+  font-family: 'Fraunces', serif;
+  font-size: 22px;
+  font-weight: 900;
+  color: var(--white);
+  line-height: 1.1;
+  margin-bottom: 14px;
+  font-style: italic;
+}
+
+.cta-btn {
+  display: block;
+  background: var(--white);
+  color: var(--amber);
+  text-decoration: none;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  padding: 11px 0;
+  transition: background 0.2s, color 0.2s;
+}
+
+.cta-btn:hover {
+  background: var(--forest);
+  color: var(--lime);
+}
+
+/* ── FOOTER ── */
+.footer {
+  background: var(--ink);
+  padding: 14px 44px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footer-text {
+  font-size: 10px;
+  color: rgba(255,255,255,0.4);
+  letter-spacing: 0.5px;
+}
+
+.footer-url {
+  font-size: 10px;
+  font-weight: 600;
+  color: rgba(255,255,255,0.65);
+  letter-spacing: 1px;
+}
+
+/* ── ANIMATIONS ── */
+@keyframes slideIn {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.top-bar   { animation: slideIn 0.5s ease 0.0s both; }
+.hero      { animation: slideIn 0.5s ease 0.1s both; }
+.perks-row { animation: slideIn 0.5s ease 0.2s both; }
+.body      { animation: slideIn 0.5s ease 0.3s both; }
+.footer    { animation: slideIn 0.5s ease 0.4s both; }
+</style>
+</head>
+<body>
+
+<div class="flyer">
+  <div class="bg-number">MR</div>
+
+  <!-- TOP BAR -->
+  <div class="top-bar">
+    <span class="top-bar-left">University of Gloucestershire &nbsp;·&nbsp; UK</span>
+    <span class="top-bar-right">2026 / 27 Intake &nbsp;·&nbsp; International Postgraduate</span>
+  </div>
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-left">
+      <div class="hero-eyebrow">Now Accepting Applications</div>
+      <div class="hero-headline">Professional<br><em>MRes</em><br>Programs</div>
+      <p class="hero-sub">Master of Research <span>·</span> Cheltenham, UK <span>·</span> Globally Recognised</p>
+    </div>
+    <div class="deadline-pill">
+      <span class="dl-label">Deadline</span>
+      <span class="dl-month">30</span>
+      <span class="dl-month-name">April</span>
+      <span class="dl-note">Apply Early</span>
+    </div>
+  </div>
+
+  <!-- PERKS ROW -->
+  <div class="perks-row">
+    <div class="perk-item">
+      <div class="perk-icon-wrap">💑</div>
+      <div class="perk-text">
+        <strong>Spouse Visa Permitted</strong>
+        <small>Bring family to the UK</small>
+      </div>
+    </div>
+    <div class="perk-item">
+      <div class="perk-icon-wrap">📋</div>
+      <div class="perk-text">
+        <strong>No Research Proposal</strong>
+        <small>Simple, fast application</small>
+      </div>
+    </div>
+    <div class="perk-item">
+      <div class="perk-icon-wrap">🎓</div>
+      <div class="perk-text">
+        <strong>UK Degree</strong>
+        <small>Globally recognised award</small>
+      </div>
+    </div>
+  </div>
+
+  <!-- BODY GRID -->
+  <div class="body">
+
+    <!-- LEFT -->
+    <div class="col-left">
+
+      <div class="section-head">
+        <span class="section-head-label">Available Programmes</span>
+        <div class="section-head-line"></div>
+      </div>
+
+      <ul class="program-list">
+        <li class="program-item">
+          <div class="program-num">01</div>
+          <div class="program-details">
+            <div class="program-cat">Professional MRes</div>
+            <div class="program-title">International Business</div>
+            <div class="program-badges">
+              <span class="badge badge-green">✓ Spouse Visa</span>
+              <span class="badge badge-amber">No Proposal Needed</span>
+            </div>
+          </div>
+        </li>
+        <li class="program-item">
+          <div class="program-num">02</div>
+          <div class="program-details">
+            <div class="program-cat">Professional MRes</div>
+            <div class="program-title">Education</div>
+            <div class="program-badges">
+              <span class="badge badge-green">✓ Spouse Visa</span>
+              <span class="badge badge-amber">No Proposal Needed</span>
+            </div>
+          </div>
+        </li>
+        <li class="program-item">
+          <div class="program-num">03</div>
+          <div class="program-details">
+            <div class="program-cat">Professional MRes</div>
+            <div class="program-title">Construction Project Management</div>
+            <div class="program-badges">
+              <span class="badge badge-green">✓ Spouse Visa</span>
+              <span class="badge badge-amber">No Proposal Needed</span>
+            </div>
+          </div>
+        </li>
+        <li class="program-item">
+          <div class="program-num">04</div>
+          <div class="program-details">
+            <div class="program-cat">Professional MRes</div>
+            <div class="program-title">Communication, PR &amp; the Media</div>
+            <div class="program-badges">
+              <span class="badge badge-green">✓ Spouse Visa</span>
+              <span class="badge badge-amber">No Proposal Needed</span>
+            </div>
+          </div>
+        </li>
+      </ul>
+
+      <div class="section-head">
+        <span class="section-head-label">Why Gloucestershire</span>
+        <div class="section-head-line"></div>
+      </div>
+
+      <div class="highlights-grid">
+        <div class="highlight-box">
+          <span class="h-icon">🌍</span>
+          <div class="h-title">Family-Friendly</div>
+          <div class="h-desc">Spouse &amp; dependents welcome on UK visa</div>
+        </div>
+        <div class="highlight-box">
+          <span class="h-icon">⚡</span>
+          <div class="h-title">Fast Admission</div>
+          <div class="h-desc">No research proposal barrier to entry</div>
+        </div>
+        <div class="highlight-box">
+          <span class="h-icon">🏆</span>
+          <div class="h-title">Ranked University</div>
+          <div class="h-desc">Prestigious UK postgraduate qualification</div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- RIGHT -->
+    <div class="col-right">
+
+      <div class="fees-block">
+        <div class="fees-title">Tuition Fees 2026/27</div>
+
+        <div class="fee-card">
+          <div class="fee-mode">Full-Time</div>
+          <div class="fee-amount"><sup>£</sup>13,425</div>
+          <div class="fee-detail">per year &nbsp;·&nbsp; Years 1–2</div>
+        </div>
+
+        <div class="fee-divider"></div>
+
+        <div class="fee-card">
+          <div class="fee-mode">Part-Time</div>
+          <div class="fee-amount"><sup>£</sup>8,950</div>
+          <div class="fee-detail">per year &nbsp;·&nbsp; Years 1–3</div>
+        </div>
+      </div>
+
+      <ul class="why-list">
+        <li class="why-item">
+          <div class="why-dot"></div>
+          <div class="why-text">
+            <strong>Cheltenham Campus</strong>
+            Beautiful Cotswolds town, safe &amp; vibrant
+          </div>
+        </li>
+        <li class="why-item">
+          <div class="why-dot"></div>
+          <div class="why-text">
+            <strong>Post-Study Work Visa</strong>
+            2-year Graduate Route visa available
+          </div>
+        </li>
+        <li class="why-item">
+          <div class="why-dot"></div>
+          <div class="why-text">
+            <strong>Start: Sept 2026</strong>
+            Limited seats — apply early
+          </div>
+        </li>
+      </ul>
+
+      <div class="cta-block">
+        <div class="cta-small">Deadline: 30 April</div>
+        <div class="cta-big">Secure your<br>place today</div>
+        <a class="cta-btn" href="https://www.applyboard.com/search?filter[conditional_offer]=f&filter[disciplines]=5&filter[intakes]=2026-09-01&filter[locations]=gb&filter[program_levels]=doctoral_phd,masters_degree&filter[school_group_ids]=586&filter[free_application_only]=f&filter[exclude_visa_cap_programs]=f&filter[pgwp_available]=f&filter[ignore_availability]=f&filter[unpublished]=f&filter[include_pathways]=t&filter[include_ab_app_creation_disabled_programs]=f&sort=-success_score&page[number]=1&page[size]=48&r=93f2a46609d94c4188693753f6f70dd0" target="_blank">Apply Now via ApplyBoard →</a>
+      </div>
+
+    </div>
+
+  </div><!-- /body -->
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <span class="footer-text">University of Gloucestershire &nbsp;·&nbsp; Cheltenham GL50 2RH &nbsp;·&nbsp; United Kingdom</span>
+    <span class="footer-url">www.glos.ac.uk</span>
+  </div>
+
+</div>
+</body>
+</html>
