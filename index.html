@@ -3,768 +3,1057 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>MRes Programs – University of Gloucestershire</title>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,700;0,900;1,300;1,700&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<title>High Tea Event – ApplyBoard × Coventry University</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&family=Open+Sans:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap" rel="stylesheet">
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 :root {
-  --forest: #1b4332;
-  --forest-mid: #2d6a4f;
-  --forest-light: #40916c;
-  --lime: #b7e4c7;
-  --cream: #faf7f0;
-  --warm: #f0e9d6;
-  --amber: #e07a2f;
-  --amber-light: #f4a460;
-  --ink: #1a1a18;
-  --smoke: #6b6b5e;
-  --white: #ffffff;
+  --blue:       #1E6DEB;
+  --blue-dark:  #1458c8;
+  --blue-deep:  #0d3d8a;
+  --blue-light: #5b96f2;
+  --blue-pale:  #e8f1fd;
+  --gold:       #c9993a;
+  --gold-light: #e8c06a;
+  --white:      #ffffff;
+  --off-white:  #f7f9ff;
+  --ink:        #0a1628;
+  --muted:      #5a7299;
+  --border:     rgba(30,109,235,0.15);
 }
 
 body {
-  background: #e8e2d4;
-  font-family: 'Outfit', sans-serif;
+  background: #0d1f42;
   display: flex;
   justify-content: center;
-  padding: 48px 20px;
+  align-items: flex-start;
   min-height: 100vh;
+  padding: 48px 20px;
+  font-family: 'Open Sans', sans-serif;
 }
 
-/* ── FLYER SHELL ── */
+/* ─── FLYER SHELL ─── */
 .flyer {
-  width: 780px;
-  background: var(--cream);
+  width: 800px;
+  background: var(--white);
   position: relative;
   overflow: hidden;
-  box-shadow: 12px 12px 0 #1b4332, 20px 20px 0 rgba(27,67,50,0.2);
+  box-shadow: 0 60px 120px rgba(0,0,0,0.5), 0 0 0 1px rgba(30,109,235,0.1);
 }
 
-/* ── BIG BG NUMBER ── */
-.bg-number {
+/* ─── HERO SECTION ─── */
+.hero {
+  background: linear-gradient(145deg, var(--blue-deep) 0%, var(--blue) 55%, #2a7de8 100%);
+  position: relative;
+  padding: 0;
+  overflow: hidden;
+  min-height: 380px;
+  display: flex;
+  flex-direction: column;
+}
+
+/* fine mesh texture */
+.hero::before {
+  content: '';
   position: absolute;
-  top: -20px; right: -10px;
-  font-family: 'Fraunces', serif;
-  font-size: 280px;
-  font-weight: 900;
-  color: rgba(27,67,50,0.05);
-  line-height: 1;
+  inset: 0;
+  background-image:
+    radial-gradient(circle at 20% 80%, rgba(201,153,58,0.18) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(255,255,255,0.08) 0%, transparent 45%),
+    repeating-linear-gradient(45deg, rgba(255,255,255,0.015) 0px, rgba(255,255,255,0.015) 1px, transparent 1px, transparent 12px);
   pointer-events: none;
-  user-select: none;
-  letter-spacing: -10px;
 }
 
-/* ── TOP BAR ── */
-.top-bar {
-  background: var(--forest);
-  padding: 10px 44px;
+/* diagonal bottom cut */
+.hero::after {
+  content: '';
+  position: absolute;
+  bottom: -2px; left: 0; right: 0;
+  height: 60px;
+  background: var(--white);
+  clip-path: polygon(0 100%, 100% 0%, 100% 100%);
+  pointer-events: none;
+}
+
+/* ─── TOP LOGOS BAR ─── */
+.logos-bar {
+  position: relative;
+  z-index: 10;
+  padding: 22px 44px;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  border-bottom: 1px solid rgba(255,255,255,0.12);
+  background: rgba(0,0,0,0.08);
+  backdrop-filter: blur(4px);
 }
 
-.top-bar-left {
-  font-size: 10px;
-  font-weight: 500;
-  letter-spacing: 3px;
+.logo-wrap {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(255,255,255,0.95);
+  padding: 8px 18px;
+  border-radius: 2px;
+}
+
+.logo-wrap img {
+  height: 28px;
+  width: auto;
+  display: block;
+  object-fit: contain;
+}
+
+/* Coventry logo SVG inline fallback */
+.coventry-logo-svg {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.cov-icon {
+  width: 32px;
+  height: 32px;
+  flex-shrink: 0;
+}
+
+.cov-text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.1;
+}
+
+.cov-text .line1 {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 800;
+  font-size: 12.5px;
+  letter-spacing: 1.5px;
+  color: #003a70;
   text-transform: uppercase;
-  color: var(--lime);
 }
 
-.top-bar-right {
-  font-size: 10px;
+.cov-text .line2 {
+  font-family: 'Montserrat', sans-serif;
   font-weight: 500;
+  font-size: 10px;
   letter-spacing: 2px;
-  color: rgba(183,228,199,0.6);
+  color: #003a70;
+  text-transform: uppercase;
 }
 
-/* ── HERO ── */
-.hero {
-  padding: 52px 44px 44px;
+.logos-x {
+  color: rgba(255,255,255,0.5);
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 300;
+  font-size: 20px;
+  letter-spacing: 2px;
+}
+
+/* ─── HERO CONTENT ─── */
+.hero-content {
   position: relative;
+  z-index: 5;
+  padding: 32px 44px 80px;
+  flex: 1;
   display: grid;
   grid-template-columns: 1fr auto;
   gap: 24px;
-  align-items: end;
-  border-bottom: 3px solid var(--forest);
+  align-items: center;
 }
 
-.hero-left {}
+.hero-text {}
 
-.hero-eyebrow {
+.event-eyebrow {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  background: var(--amber);
-  color: var(--white);
-  font-size: 10px;
+  background: rgba(201,153,58,0.2);
+  border: 1px solid rgba(201,153,58,0.5);
+  color: var(--gold-light);
+  font-family: 'Montserrat', sans-serif;
+  font-size: 9.5px;
   font-weight: 700;
-  letter-spacing: 2.5px;
+  letter-spacing: 3px;
   text-transform: uppercase;
   padding: 5px 14px;
-  margin-bottom: 20px;
+  margin-bottom: 18px;
 }
 
-.hero-eyebrow::before {
-  content: '●';
-  font-size: 6px;
+.event-eyebrow::before {
+  content: '✦';
+  font-size: 8px;
 }
 
-.hero-headline {
-  font-family: 'Fraunces', serif;
-  font-size: 72px;
-  font-weight: 900;
-  color: var(--forest);
-  line-height: 0.9;
-  letter-spacing: -2px;
+.hero-presents {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 12px;
+  font-weight: 300;
+  letter-spacing: 1.5px;
+  color: rgba(255,255,255,0.65);
+  text-transform: uppercase;
   margin-bottom: 6px;
 }
 
-.hero-headline em {
-  font-style: italic;
-  color: var(--amber);
-}
-
-.hero-sub {
-  font-size: 12px;
-  font-weight: 500;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  color: var(--smoke);
-  margin-top: 16px;
-}
-
-.hero-sub span {
-  margin: 0 8px;
-  color: var(--forest-light);
-}
-
-/* Deadline pill */
-.deadline-pill {
-  background: var(--forest);
-  color: var(--cream);
-  padding: 24px 20px;
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  min-width: 110px;
-  position: relative;
-}
-
-.deadline-pill::after {
-  content: '';
-  position: absolute;
-  inset: 4px;
-  border: 1px dashed rgba(183,228,199,0.3);
-  pointer-events: none;
-}
-
-.dl-label {
-  font-size: 8px;
-  letter-spacing: 2.5px;
-  text-transform: uppercase;
-  color: var(--lime);
+.hero-title-top {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 14px;
   font-weight: 600;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.8);
   margin-bottom: 4px;
 }
 
-.dl-month {
-  font-family: 'Fraunces', serif;
-  font-size: 42px;
-  font-weight: 900;
-  line-height: 1;
+.hero-title-main {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 62px;
+  font-weight: 800;
+  line-height: 0.95;
+  letter-spacing: -1px;
   color: var(--white);
+  margin-bottom: 8px;
 }
 
-.dl-month-name {
-  font-size: 13px;
-  font-weight: 600;
-  color: var(--lime);
-  letter-spacing: 1px;
-  text-transform: uppercase;
+.hero-title-main em {
+  font-style: italic;
+  font-weight: 300;
+  color: var(--gold-light);
+  display: block;
+  font-size: 50px;
+  letter-spacing: 2px;
 }
 
-.dl-note {
-  font-size: 8px;
-  color: rgba(183,228,199,0.5);
-  letter-spacing: 1px;
-  margin-top: 4px;
+.hero-subtitle {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 12.5px;
+  font-weight: 400;
+  color: rgba(255,255,255,0.65);
+  letter-spacing: 0.5px;
+  margin-top: 14px;
+  line-height: 1.6;
 }
 
-/* ── PERKS ROW ── */
-.perks-row {
-  background: var(--amber);
-  padding: 14px 44px;
-  display: flex;
-  align-items: center;
-  gap: 0;
-}
-
-.perk-item {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  flex: 1;
-  padding: 0 20px;
-}
-
-.perk-item:first-child { padding-left: 0; }
-.perk-item:last-child  { padding-right: 0; }
-
-.perk-item + .perk-item {
-  border-left: 1px solid rgba(255,255,255,0.35);
-}
-
-.perk-icon-wrap {
-  width: 32px;
-  height: 32px;
-  background: rgba(255,255,255,0.2);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 15px;
+/* ─── HOLDING SHAPE (tea visual) ─── */
+.holding-shape {
+  position: relative;
+  width: 200px;
+  height: 200px;
   flex-shrink: 0;
 }
 
-.perk-text strong {
+.shape-outer {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  border: 1px solid rgba(255,255,255,0.15);
+  animation: rotateSlow 25s linear infinite;
+}
+
+.shape-inner {
+  position: absolute;
+  inset: 14px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(201,153,58,0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+@keyframes rotateSlow {
+  to { transform: rotate(360deg); }
+}
+
+/* Tea cup SVG illustration */
+.tea-illus {
+  width: 130px;
+  height: 130px;
+}
+
+/* ─── DIAGONAL ACCENT ─── */
+.diagonal-stripe {
+  position: absolute;
+  top: 0; right: 60px;
+  width: 3px;
+  height: 100%;
+  background: linear-gradient(180deg, transparent, rgba(201,153,58,0.4), transparent);
+  pointer-events: none;
+  z-index: 3;
+}
+
+/* ─── DATE BADGE ─── */
+.date-badge {
+  position: absolute;
+  z-index: 20;
+  right: 44px;
+  bottom: 30px;
+  background: var(--gold);
+  color: var(--ink);
+  padding: 14px 20px;
+  text-align: center;
+  box-shadow: 0 8px 24px rgba(201,153,58,0.4);
+}
+
+.date-badge .date-day {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 36px;
+  font-weight: 900;
+  line-height: 1;
   display: block;
-  font-size: 11.5px;
+}
+
+.date-badge .date-month {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 11px;
   font-weight: 700;
-  color: var(--white);
-  line-height: 1.2;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  display: block;
+  margin-top: 2px;
 }
 
-.perk-text small {
-  font-size: 9.5px;
-  color: rgba(255,255,255,0.75);
+.date-badge .date-year {
+  font-size: 10px;
   font-weight: 400;
+  opacity: 0.7;
+  margin-top: 1px;
+  display: block;
 }
 
-/* ── MAIN BODY ── */
-.body {
-  display: grid;
-  grid-template-columns: 1fr 240px;
-  gap: 0;
+/* ─── DETAILS STRIP ─── */
+.details-strip {
+  background: var(--blue);
+  display: flex;
+  align-items: stretch;
+  position: relative;
+  z-index: 5;
 }
 
-/* ── LEFT COLUMN ── */
-.col-left {
-  padding: 36px 44px 36px 44px;
-  border-right: 2px solid var(--forest);
-}
-
-.section-head {
+.detail-item {
+  flex: 1;
+  padding: 14px 24px;
   display: flex;
   align-items: center;
   gap: 12px;
-  margin-bottom: 20px;
+  border-right: 1px solid rgba(255,255,255,0.1);
+  transition: background 0.25s;
 }
 
-.section-head-label {
+.detail-item:last-child { border-right: none; }
+.detail-item:hover { background: rgba(255,255,255,0.07); }
+
+.detail-icon {
+  font-size: 18px;
+  flex-shrink: 0;
+}
+
+.detail-label {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 8.5px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.55);
+  margin-bottom: 2px;
+}
+
+.detail-value {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--white);
+  letter-spacing: 0.3px;
+  line-height: 1.3;
+}
+
+/* ─── BODY ─── */
+.body {
+  padding: 44px 44px 36px;
+  display: grid;
+  grid-template-columns: 1fr 280px;
+  gap: 36px;
+}
+
+/* ─── LEFT: About ─── */
+.section-eyebrow {
+  font-family: 'Montserrat', sans-serif;
   font-size: 9px;
   font-weight: 700;
   letter-spacing: 3px;
   text-transform: uppercase;
-  color: var(--forest);
-}
-
-.section-head-line {
-  flex: 1;
-  height: 2px;
-  background: var(--forest);
-}
-
-/* Programs list */
-.program-list {
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  margin-bottom: 32px;
-}
-
-.program-item {
-  display: flex;
-  align-items: stretch;
-  background: var(--white);
-  border: 1.5px solid #ddd8cc;
-  overflow: hidden;
-  transition: border-color 0.2s, transform 0.2s;
-  cursor: default;
-}
-
-.program-item:hover {
-  border-color: var(--forest-mid);
-  transform: translateX(4px);
-}
-
-.program-num {
-  background: var(--forest);
-  color: var(--lime);
-  font-family: 'Fraunces', serif;
-  font-size: 22px;
-  font-weight: 900;
-  width: 48px;
+  color: var(--blue);
+  margin-bottom: 12px;
   display: flex;
   align-items: center;
-  justify-content: center;
+  gap: 10px;
+}
+
+.section-eyebrow::before {
+  content: '';
+  width: 24px;
+  height: 2px;
+  background: var(--blue);
   flex-shrink: 0;
 }
 
-.program-details {
-  padding: 14px 16px;
-  flex: 1;
-}
-
-.program-cat {
-  font-size: 9px;
-  font-weight: 600;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  color: var(--smoke);
-  margin-bottom: 3px;
-}
-
-.program-title {
-  font-family: 'Fraunces', serif;
-  font-size: 18px;
-  font-weight: 700;
+.about-heading {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 28px;
+  font-weight: 800;
+  line-height: 1.15;
+  letter-spacing: -0.5px;
   color: var(--ink);
-  line-height: 1.2;
+  margin-bottom: 14px;
 }
 
-.program-badges {
+.about-heading span {
+  color: var(--blue);
+}
+
+.about-body {
+  font-size: 13px;
+  font-weight: 400;
+  color: #3a4f6e;
+  line-height: 1.75;
+  margin-bottom: 24px;
+}
+
+/* Agenda items */
+.agenda {
   display: flex;
-  gap: 6px;
-  margin-top: 8px;
-}
-
-.badge {
-  font-size: 9px;
-  font-weight: 600;
-  letter-spacing: 0.5px;
-  padding: 3px 9px;
-  text-transform: uppercase;
-}
-
-.badge-green {
-  background: #d8f3dc;
-  color: var(--forest);
-  border: 1px solid #b7e4c7;
-}
-
-.badge-amber {
-  background: #fde8d0;
-  color: #b5521a;
-  border: 1px solid #f4a460;
-}
-
-/* Highlights */
-.highlights-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  flex-direction: column;
   gap: 10px;
 }
 
-.highlight-box {
-  border: 1.5px solid #ddd8cc;
-  padding: 14px 12px;
-  background: var(--warm);
-  text-align: center;
+.agenda-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 12px 16px;
+  background: var(--off-white);
+  border-left: 3px solid var(--blue);
 }
 
-.h-icon { font-size: 20px; margin-bottom: 6px; display: block; }
-
-.h-title {
-  font-size: 11px;
+.agenda-time {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 10.5px;
   font-weight: 700;
-  color: var(--forest);
-  margin-bottom: 4px;
+  color: var(--blue);
+  white-space: nowrap;
+  letter-spacing: 0.5px;
+  min-width: 60px;
+  margin-top: 1px;
 }
 
-.h-desc {
-  font-size: 9.5px;
-  color: var(--smoke);
+.agenda-desc strong {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 12.5px;
+  font-weight: 700;
+  color: var(--ink);
+  display: block;
+  margin-bottom: 2px;
+}
+
+.agenda-desc p {
+  font-size: 11px;
+  color: var(--muted);
   line-height: 1.5;
 }
 
-/* ── RIGHT COLUMN ── */
+/* ─── RIGHT: Highlights + RSVP ─── */
 .col-right {
   display: flex;
   flex-direction: column;
-  background: var(--forest);
+  gap: 16px;
 }
 
-/* Fees block */
-.fees-block {
-  padding: 32px 24px;
-  flex: 1;
+/* Holding shape image panel */
+.image-panel {
+  position: relative;
+  height: 200px;
+  overflow: hidden;
+  background: linear-gradient(135deg, var(--blue-pale) 0%, #dbe9ff 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.fees-title {
+.image-panel-inner {
+  position: relative;
+  z-index: 2;
+}
+
+/* clip-path hexagon holding shape */
+.hex-shape {
+  width: 170px;
+  height: 160px;
+  clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
+  background: linear-gradient(135deg, #d4e8ff 0%, #a8cef5 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.image-panel::before {
+  content: '';
+  position: absolute;
+  top: -30px; right: -30px;
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  border: 1px dashed rgba(30,109,235,0.2);
+}
+
+.image-panel::after {
+  content: '';
+  position: absolute;
+  bottom: -20px; left: -20px;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background: rgba(30,109,235,0.05);
+}
+
+/* Teapot large SVG */
+.teapot-svg {
+  width: 120px;
+  height: 120px;
+}
+
+/* Highlights list */
+.highlights {
+  background: var(--blue);
+  padding: 20px;
+}
+
+.highlights-title {
+  font-family: 'Montserrat', sans-serif;
   font-size: 9px;
   font-weight: 700;
   letter-spacing: 3px;
   text-transform: uppercase;
-  color: var(--lime);
-  margin-bottom: 24px;
-  padding-bottom: 10px;
-  border-bottom: 1px solid rgba(183,228,199,0.25);
+  color: rgba(255,255,255,0.55);
+  margin-bottom: 14px;
 }
 
-.fee-card {
-  margin-bottom: 20px;
-}
-
-.fee-mode {
-  font-size: 9px;
-  font-weight: 600;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  color: rgba(183,228,199,0.6);
-  margin-bottom: 4px;
-}
-
-.fee-amount {
-  font-family: 'Fraunces', serif;
-  font-size: 42px;
-  font-weight: 900;
-  color: var(--white);
-  line-height: 1;
-}
-
-.fee-amount sup {
-  font-size: 18px;
-  vertical-align: super;
-  font-weight: 600;
-}
-
-.fee-detail {
-  font-size: 10px;
-  color: rgba(183,228,199,0.5);
-  margin-top: 3px;
-}
-
-.fee-divider {
-  height: 1px;
-  background: rgba(183,228,199,0.15);
-  margin: 20px 0;
-}
-
-/* why list */
-.why-list {
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  padding: 0 24px 28px;
-}
-
-.why-item {
+.highlight-row {
   display: flex;
   align-items: flex-start;
   gap: 10px;
+  margin-bottom: 12px;
 }
 
-.why-dot {
+.highlight-row:last-child { margin-bottom: 0; }
+
+.h-dot {
   width: 6px;
   height: 6px;
-  background: var(--amber);
+  background: var(--gold-light);
   border-radius: 50%;
   margin-top: 5px;
   flex-shrink: 0;
 }
 
-.why-text {
-  font-size: 11px;
-  color: rgba(183,228,199,0.75);
+.h-text {
+  font-size: 11.5px;
+  font-weight: 400;
+  color: rgba(255,255,255,0.85);
   line-height: 1.5;
 }
 
-.why-text strong {
-  color: var(--white);
+.h-text strong {
   display: block;
+  font-family: 'Montserrat', sans-serif;
   font-size: 12px;
-  font-weight: 600;
+  font-weight: 700;
+  color: var(--white);
   margin-bottom: 1px;
 }
 
-/* CTA block */
-.cta-block {
-  background: var(--amber);
-  padding: 22px 24px;
+/* ─── RSVP BLOCK ─── */
+.rsvp-block {
+  background: linear-gradient(135deg, var(--ink) 0%, #152a55 100%);
+  padding: 22px 20px;
   text-align: center;
+  position: relative;
+  overflow: hidden;
 }
 
-.cta-small {
+.rsvp-block::before {
+  content: '';
+  position: absolute;
+  top: -40px; right: -40px;
+  width: 130px;
+  height: 130px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(30,109,235,0.3) 0%, transparent 70%);
+}
+
+.rsvp-label {
+  font-family: 'Montserrat', sans-serif;
   font-size: 9px;
   font-weight: 700;
-  letter-spacing: 2px;
+  letter-spacing: 3px;
   text-transform: uppercase;
-  color: rgba(255,255,255,0.75);
+  color: rgba(255,255,255,0.45);
   margin-bottom: 6px;
 }
 
-.cta-big {
-  font-family: 'Fraunces', serif;
-  font-size: 22px;
-  font-weight: 900;
-  color: var(--white);
-  line-height: 1.1;
-  margin-bottom: 14px;
-  font-style: italic;
-}
-
-.cta-btn {
-  display: block;
-  background: var(--white);
-  color: var(--amber);
-  text-decoration: none;
-  font-size: 10px;
+.rsvp-cta {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 18px;
   font-weight: 800;
-  letter-spacing: 2px;
+  letter-spacing: 1px;
+  color: var(--white);
+  margin-bottom: 4px;
+}
+
+.rsvp-note {
+  font-size: 10.5px;
+  color: rgba(255,255,255,0.45);
+  margin-bottom: 16px;
+  line-height: 1.5;
+}
+
+.rsvp-btn {
+  display: block;
+  background: var(--blue);
+  color: var(--white);
+  text-decoration: none;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 3px;
   text-transform: uppercase;
-  padding: 11px 0;
-  transition: background 0.2s, color 0.2s;
+  padding: 14px 0;
+  position: relative;
+  z-index: 1;
+  transition: background 0.25s, transform 0.2s, box-shadow 0.2s;
+  box-shadow: 0 4px 20px rgba(30,109,235,0.5);
 }
 
-.cta-btn:hover {
-  background: var(--forest);
-  color: var(--lime);
+.rsvp-btn:hover {
+  background: var(--blue-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 28px rgba(30,109,235,0.6);
 }
 
-/* ── FOOTER ── */
+.rsvp-btn::after {
+  content: ' →';
+}
+
+/* ─── DIVIDER ─── */
+.ornament-divider {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 0 44px;
+  margin: 4px 0;
+}
+
+.div-line {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--border), transparent);
+}
+
+.div-icon {
+  font-size: 14px;
+  color: var(--gold);
+}
+
+/* ─── SPONSOR STRIP ─── */
+.sponsor-strip {
+  background: var(--blue-pale);
+  padding: 16px 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+
+.sponsor-label {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 8.5px;
+  font-weight: 700;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: var(--muted);
+  white-space: nowrap;
+}
+
+.sponsor-logos {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.sponsor-logo-box {
+  background: var(--white);
+  padding: 6px 14px;
+  border: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 38px;
+}
+
+.sponsor-logo-box img {
+  height: 22px;
+  width: auto;
+  object-fit: contain;
+  display: block;
+}
+
+/* ─── FOOTER ─── */
 .footer {
+  padding: 16px 44px;
   background: var(--ink);
-  padding: 14px 44px;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-.footer-text {
+.footer-left {
   font-size: 10px;
-  color: rgba(255,255,255,0.4);
+  color: rgba(255,255,255,0.35);
   letter-spacing: 0.5px;
 }
 
-.footer-url {
+.footer-right {
+  font-family: 'Montserrat', sans-serif;
   font-size: 10px;
   font-weight: 600;
-  color: rgba(255,255,255,0.65);
+  color: rgba(255,255,255,0.5);
   letter-spacing: 1px;
 }
 
-/* ── ANIMATIONS ── */
-@keyframes slideIn {
-  from { opacity: 0; transform: translateY(24px); }
+/* ─── ANIMATIONS ─── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
   to   { opacity: 1; transform: translateY(0); }
 }
 
-.top-bar   { animation: slideIn 0.5s ease 0.0s both; }
-.hero      { animation: slideIn 0.5s ease 0.1s both; }
-.perks-row { animation: slideIn 0.5s ease 0.2s both; }
-.body      { animation: slideIn 0.5s ease 0.3s both; }
-.footer    { animation: slideIn 0.5s ease 0.4s both; }
+@keyframes shimmer {
+  0%, 100% { opacity: 0.4; }
+  50% { opacity: 1; }
+}
+
+.hero       { animation: fadeUp 0.6s ease 0.05s both; }
+.details-strip { animation: fadeUp 0.5s ease 0.2s both; }
+.body       { animation: fadeUp 0.5s ease 0.3s both; }
+.ornament-divider { animation: fadeUp 0.5s ease 0.35s both; }
+.sponsor-strip { animation: fadeUp 0.5s ease 0.4s both; }
+.footer     { animation: fadeUp 0.5s ease 0.45s both; }
+
+.gold-shimmer { animation: shimmer 3s ease-in-out infinite; }
 </style>
 </head>
 <body>
 
 <div class="flyer">
-  <div class="bg-number">MR</div>
 
-  <!-- TOP BAR -->
-  <div class="top-bar">
-    <span class="top-bar-left">University of Gloucestershire &nbsp;·&nbsp; UK</span>
-    <span class="top-bar-right">2026 / 27 Intake &nbsp;·&nbsp; International Postgraduate</span>
-  </div>
-
-  <!-- HERO -->
+  <!-- ─── HERO ─── -->
   <div class="hero">
-    <div class="hero-left">
-      <div class="hero-eyebrow">Now Accepting Applications</div>
-      <div class="hero-headline">Professional<br><em>MRes</em><br>Programs</div>
-      <p class="hero-sub">Master of Research <span>·</span> Cheltenham, UK <span>·</span> Globally Recognised</p>
+    <div class="diagonal-stripe"></div>
+
+    <!-- LOGOS BAR -->
+    <div class="logos-bar">
+      <!-- ApplyBoard Logo -->
+      <div class="logo-wrap">
+        <img src="https://www.applyboard.com/wp-content/uploads/2020/09/ApplyBoard_Logo_Horizontal_Blue.svg"
+             alt="ApplyBoard"
+             onerror="this.parentNode.innerHTML='<svg width=\'130\' height=\'28\' viewBox=\'0 0 130 28\' xmlns=\'http://www.w3.org/2000/svg\'><rect x=\'0\' y=\'4\' width=\'20\' height=\'20\' rx=\'4\' fill=\'#1E6DEB\'/><text x=\'5\' y=\'18\' font-family=\'Montserrat\' font-weight=\'800\' font-size=\'12\' fill=\'white\'>A</text><text x=\'26\' y=\'19\' font-family=\'Montserrat\' font-weight=\'700\' font-size=\'13\' fill=\'#1E6DEB\'>ApplyBoard</text></svg>'"
+        />
+      </div>
+
+      <span class="logos-x">×</span>
+
+      <!-- Coventry University Logo -->
+      <div class="logo-wrap">
+        <img src="https://www.coventry.ac.uk/globalassets/media/global/logos/coventry-university-logo.png"
+             alt="Coventry University"
+             onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+        />
+        <!-- Inline SVG fallback -->
+        <div class="coventry-logo-svg" style="display:none;">
+          <svg class="cov-icon" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+            <rect width="32" height="32" rx="3" fill="#003a70"/>
+            <text x="6" y="23" font-family="serif" font-weight="900" font-size="22" fill="#ffffff">C</text>
+          </svg>
+          <div class="cov-text">
+            <span class="line1">Coventry</span>
+            <span class="line2">University</span>
+          </div>
+        </div>
+      </div>
     </div>
-    <div class="deadline-pill">
-      <span class="dl-label">Deadline</span>
-      <span class="dl-month">30</span>
-      <span class="dl-month-name">April</span>
-      <span class="dl-note">Apply Early</span>
+
+    <!-- HERO CONTENT -->
+    <div class="hero-content">
+      <div class="hero-text">
+        <div class="event-eyebrow gold-shimmer">Exclusive Networking Event</div>
+        <p class="hero-presents">ApplyBoard &amp; Coventry University Present</p>
+        <div class="hero-title-top">AN AFTERNOON OF</div>
+        <div class="hero-title-main">
+          High Tea
+          <em>&amp; Connections</em>
+        </div>
+        <p class="hero-subtitle">
+          Join us for an elegant afternoon of high tea,<br>
+          meaningful conversations, and new beginnings.
+        </p>
+      </div>
+
+      <!-- Holding Shape with Tea Illustration -->
+      <div class="holding-shape">
+        <div class="shape-outer">
+          <!-- dashed border dots -->
+          <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" style="position:absolute;inset:0;width:100%;height:100%;">
+            <circle cx="100" cy="100" r="96" fill="none" stroke="rgba(255,255,255,0.12)" stroke-width="1" stroke-dasharray="4 8"/>
+          </svg>
+        </div>
+        <div class="shape-inner">
+          <!-- Tea Cup + Teapot Illustration -->
+          <svg class="tea-illus" viewBox="0 0 130 130" xmlns="http://www.w3.org/2000/svg">
+            <!-- saucer -->
+            <ellipse cx="65" cy="102" rx="42" ry="8" fill="rgba(255,255,255,0.15)"/>
+            <!-- cup body -->
+            <path d="M32 70 Q30 100 65 100 Q100 100 98 70 Z" fill="rgba(255,255,255,0.25)" stroke="rgba(255,255,255,0.4)" stroke-width="1.5"/>
+            <!-- cup top ellipse -->
+            <ellipse cx="65" cy="70" rx="33" ry="7" fill="rgba(255,255,255,0.3)" stroke="rgba(255,255,255,0.5)" stroke-width="1"/>
+            <!-- tea surface -->
+            <ellipse cx="65" cy="70" rx="28" ry="5.5" fill="rgba(201,153,58,0.55)"/>
+            <!-- steam lines -->
+            <path d="M52 60 Q50 50 53 42 Q56 34 54 26" fill="none" stroke="rgba(255,255,255,0.4)" stroke-width="1.5" stroke-linecap="round"/>
+            <path d="M65 58 Q63 48 66 40 Q69 32 67 24" fill="none" stroke="rgba(255,255,255,0.4)" stroke-width="1.5" stroke-linecap="round"/>
+            <path d="M78 60 Q76 50 79 42 Q82 34 80 26" fill="none" stroke="rgba(255,255,255,0.4)" stroke-width="1.5" stroke-linecap="round"/>
+            <!-- handle -->
+            <path d="M98 76 Q116 76 116 85 Q116 94 98 94" fill="none" stroke="rgba(255,255,255,0.45)" stroke-width="2.5" stroke-linecap="round"/>
+            <!-- saucer plate -->
+            <ellipse cx="65" cy="102" rx="38" ry="6" fill="none" stroke="rgba(255,255,255,0.3)" stroke-width="1.5"/>
+            <!-- small flowers on cup -->
+            <circle cx="55" cy="85" r="2.5" fill="rgba(201,153,58,0.6)"/>
+            <circle cx="65" cy="88" r="2" fill="rgba(255,255,255,0.3)"/>
+            <circle cx="75" cy="84" r="2.5" fill="rgba(201,153,58,0.5)"/>
+          </svg>
+        </div>
+      </div>
+    </div>
+
+    <!-- Date badge -->
+    <div class="date-badge">
+      <span class="date-day">TBD</span>
+      <span class="date-month">Month 2026</span>
+      <span class="date-year">Mark Your Calendar</span>
     </div>
   </div>
 
-  <!-- PERKS ROW -->
-  <div class="perks-row">
-    <div class="perk-item">
-      <div class="perk-icon-wrap">💑</div>
-      <div class="perk-text">
-        <strong>Spouse Visa Permitted</strong>
-        <small>Bring family to the UK</small>
+  <!-- ─── DETAILS STRIP ─── -->
+  <div class="details-strip">
+    <div class="detail-item">
+      <span class="detail-icon">🕐</span>
+      <div>
+        <div class="detail-label">Time</div>
+        <div class="detail-value">3:00 PM – 6:00 PM</div>
       </div>
     </div>
-    <div class="perk-item">
-      <div class="perk-icon-wrap">📋</div>
-      <div class="perk-text">
-        <strong>No Research Proposal</strong>
-        <small>Simple, fast application</small>
+    <div class="detail-item">
+      <span class="detail-icon">📍</span>
+      <div>
+        <div class="detail-label">Venue</div>
+        <div class="detail-value">Coventry University, UK</div>
       </div>
     </div>
-    <div class="perk-item">
-      <div class="perk-icon-wrap">🎓</div>
-      <div class="perk-text">
-        <strong>UK Degree</strong>
-        <small>Globally recognised award</small>
+    <div class="detail-item">
+      <span class="detail-icon">🎟️</span>
+      <div>
+        <div class="detail-label">Entry</div>
+        <div class="detail-value">Complimentary · By RSVP Only</div>
+      </div>
+    </div>
+    <div class="detail-item">
+      <span class="detail-icon">👥</span>
+      <div>
+        <div class="detail-label">Capacity</div>
+        <div class="detail-value">Limited Seats Available</div>
       </div>
     </div>
   </div>
 
-  <!-- BODY GRID -->
+  <!-- ─── BODY ─── -->
   <div class="body">
 
     <!-- LEFT -->
     <div class="col-left">
+      <div class="section-eyebrow">About the Event</div>
+      <h2 class="about-heading">Where <span>Ambition</span><br>Meets Elegance</h2>
+      <p class="about-body">
+        ApplyBoard and Coventry University warmly invite you to an exclusive
+        High Tea gathering — a refined afternoon designed to connect prospective
+        students, alumni, faculty, and partners over exquisite tea, fine pastries,
+        and meaningful conversations about global education and career pathways.
+      </p>
 
-      <div class="section-head">
-        <span class="section-head-label">Available Programmes</span>
-        <div class="section-head-line"></div>
-      </div>
-
-      <ul class="program-list">
-        <li class="program-item">
-          <div class="program-num">01</div>
-          <div class="program-details">
-            <div class="program-cat">Professional MRes</div>
-            <div class="program-title">International Business</div>
-            <div class="program-badges">
-              <span class="badge badge-green">✓ Spouse Visa</span>
-              <span class="badge badge-amber">No Proposal Needed</span>
-            </div>
+      <div class="section-eyebrow">Event Agenda</div>
+      <div class="agenda">
+        <div class="agenda-item">
+          <span class="agenda-time">3:00 PM</span>
+          <div class="agenda-desc">
+            <strong>Welcome &amp; Registration</strong>
+            <p>Arrive, be greeted, and settle in with your first cup of tea</p>
           </div>
-        </li>
-        <li class="program-item">
-          <div class="program-num">02</div>
-          <div class="program-details">
-            <div class="program-cat">Professional MRes</div>
-            <div class="program-title">Education</div>
-            <div class="program-badges">
-              <span class="badge badge-green">✓ Spouse Visa</span>
-              <span class="badge badge-amber">No Proposal Needed</span>
-            </div>
-          </div>
-        </li>
-        <li class="program-item">
-          <div class="program-num">03</div>
-          <div class="program-details">
-            <div class="program-cat">Professional MRes</div>
-            <div class="program-title">Construction Project Management</div>
-            <div class="program-badges">
-              <span class="badge badge-green">✓ Spouse Visa</span>
-              <span class="badge badge-amber">No Proposal Needed</span>
-            </div>
-          </div>
-        </li>
-        <li class="program-item">
-          <div class="program-num">04</div>
-          <div class="program-details">
-            <div class="program-cat">Professional MRes</div>
-            <div class="program-title">Communication, PR &amp; the Media</div>
-            <div class="program-badges">
-              <span class="badge badge-green">✓ Spouse Visa</span>
-              <span class="badge badge-amber">No Proposal Needed</span>
-            </div>
-          </div>
-        </li>
-      </ul>
-
-      <div class="section-head">
-        <span class="section-head-label">Why Gloucestershire</span>
-        <div class="section-head-line"></div>
-      </div>
-
-      <div class="highlights-grid">
-        <div class="highlight-box">
-          <span class="h-icon">🌍</span>
-          <div class="h-title">Family-Friendly</div>
-          <div class="h-desc">Spouse &amp; dependents welcome on UK visa</div>
         </div>
-        <div class="highlight-box">
-          <span class="h-icon">⚡</span>
-          <div class="h-title">Fast Admission</div>
-          <div class="h-desc">No research proposal barrier to entry</div>
+        <div class="agenda-item">
+          <span class="agenda-time">3:30 PM</span>
+          <div class="agenda-desc">
+            <strong>Opening Remarks</strong>
+            <p>Introductions from ApplyBoard &amp; Coventry University representatives</p>
+          </div>
         </div>
-        <div class="highlight-box">
-          <span class="h-icon">🏆</span>
-          <div class="h-title">Ranked University</div>
-          <div class="h-desc">Prestigious UK postgraduate qualification</div>
+        <div class="agenda-item">
+          <span class="agenda-time">4:00 PM</span>
+          <div class="agenda-desc">
+            <strong>High Tea &amp; Networking</strong>
+            <p>Enjoy a premium spread while connecting with peers and mentors</p>
+          </div>
+        </div>
+        <div class="agenda-item">
+          <span class="agenda-time">5:30 PM</span>
+          <div class="agenda-desc">
+            <strong>Interactive Q&amp;A Session</strong>
+            <p>Explore study opportunities, visa guidance, and scholarships</p>
+          </div>
         </div>
       </div>
-
     </div>
 
     <!-- RIGHT -->
     <div class="col-right">
 
-      <div class="fees-block">
-        <div class="fees-title">Tuition Fees 2026/27</div>
-
-        <div class="fee-card">
-          <div class="fee-mode">Full-Time</div>
-          <div class="fee-amount"><sup>£</sup>13,425</div>
-          <div class="fee-detail">per year &nbsp;·&nbsp; Years 1–2</div>
-        </div>
-
-        <div class="fee-divider"></div>
-
-        <div class="fee-card">
-          <div class="fee-mode">Part-Time</div>
-          <div class="fee-amount"><sup>£</sup>8,950</div>
-          <div class="fee-detail">per year &nbsp;·&nbsp; Years 1–3</div>
+      <!-- Visual holding shape panel -->
+      <div class="image-panel">
+        <div class="hex-shape">
+          <!-- Teapot SVG in hexagon -->
+          <svg class="teapot-svg" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+            <!-- teapot body -->
+            <ellipse cx="58" cy="72" rx="36" ry="28" fill="#1E6DEB" opacity="0.8"/>
+            <!-- spout -->
+            <path d="M22 65 Q6 55 8 45 Q10 38 20 44 Q30 50 28 62" fill="#1E6DEB" opacity="0.8"/>
+            <ellipse cx="12" cy="43" rx="6" ry="4" fill="#5b96f2" opacity="0.6" transform="rotate(-20 12 43)"/>
+            <!-- handle -->
+            <path d="M94 62 Q112 62 112 72 Q112 82 94 82" fill="none" stroke="#1E6DEB" stroke-width="5" stroke-linecap="round" opacity="0.8"/>
+            <!-- lid -->
+            <ellipse cx="58" cy="44" rx="20" ry="5" fill="#1458c8" opacity="0.9"/>
+            <ellipse cx="58" cy="44" rx="20" ry="5" fill="none" stroke="#a8cef5" stroke-width="1"/>
+            <!-- knob -->
+            <ellipse cx="58" cy="39" rx="6" ry="4" fill="#c9993a"/>
+            <!-- steam -->
+            <path d="M44 36 Q42 26 45 18" fill="none" stroke="#9bc4f8" stroke-width="2" stroke-linecap="round" opacity="0.7"/>
+            <path d="M58 34 Q56 24 59 16" fill="none" stroke="#9bc4f8" stroke-width="2" stroke-linecap="round" opacity="0.7"/>
+            <path d="M72 36 Q70 26 73 18" fill="none" stroke="#9bc4f8" stroke-width="2" stroke-linecap="round" opacity="0.7"/>
+            <!-- floral accent -->
+            <circle cx="50" cy="72" r="4" fill="rgba(201,192,100,0.5)"/>
+            <circle cx="62" cy="78" r="3" fill="rgba(255,255,255,0.3)"/>
+            <circle cx="68" cy="65" r="4" fill="rgba(201,192,100,0.4)"/>
+          </svg>
         </div>
       </div>
 
-      <ul class="why-list">
-        <li class="why-item">
-          <div class="why-dot"></div>
-          <div class="why-text">
-            <strong>Cheltenham Campus</strong>
-            Beautiful Cotswolds town, safe &amp; vibrant
+      <!-- What to expect -->
+      <div class="highlights">
+        <div class="highlights-title">What to Expect</div>
+        <div class="highlight-row">
+          <div class="h-dot"></div>
+          <div class="h-text">
+            <strong>Curated High Tea Experience</strong>
+            Premium teas, finger sandwiches &amp; fine patisserie
           </div>
-        </li>
-        <li class="why-item">
-          <div class="why-dot"></div>
-          <div class="why-text">
-            <strong>Post-Study Work Visa</strong>
-            2-year Graduate Route visa available
+        </div>
+        <div class="highlight-row">
+          <div class="h-dot"></div>
+          <div class="h-text">
+            <strong>Admissions Guidance</strong>
+            Direct conversations with Coventry University advisors
           </div>
-        </li>
-        <li class="why-item">
-          <div class="why-dot"></div>
-          <div class="why-text">
-            <strong>Start: Sept 2026</strong>
-            Limited seats — apply early
+        </div>
+        <div class="highlight-row">
+          <div class="h-dot"></div>
+          <div class="h-text">
+            <strong>Scholarship Information</strong>
+            Exclusive insights on financial aid &amp; pathways
           </div>
-        </li>
-      </ul>
+        </div>
+        <div class="highlight-row">
+          <div class="h-dot"></div>
+          <div class="h-text">
+            <strong>Professional Networking</strong>
+            Connect with students, alumni &amp; industry mentors
+          </div>
+        </div>
+      </div>
 
-      <div class="cta-block">
-        <div class="cta-small">Deadline: 30 April</div>
-        <div class="cta-big">Secure your<br>place today</div>
-        <a class="cta-btn" href="https://www.applyboard.com/search?filter[conditional_offer]=f&filter[disciplines]=5&filter[intakes]=2026-09-01&filter[locations]=gb&filter[program_levels]=doctoral_phd,masters_degree&filter[school_group_ids]=586&filter[free_application_only]=f&filter[exclude_visa_cap_programs]=f&filter[pgwp_available]=f&filter[ignore_availability]=f&filter[unpublished]=f&filter[include_pathways]=t&filter[include_ab_app_creation_disabled_programs]=f&sort=-success_score&page[number]=1&page[size]=48&r=93f2a46609d94c4188693753f6f70dd0" target="_blank">Apply Now via ApplyBoard →</a>
+      <!-- RSVP -->
+      <div class="rsvp-block">
+        <div class="rsvp-label">Seats are Limited</div>
+        <div class="rsvp-cta">Reserve Your Place</div>
+        <p class="rsvp-note">Complimentary entry · Confirmation sent via email</p>
+        <a class="rsvp-btn"
+           href="https://docs.google.com/forms/d/e/1FAIpQLSfjXZt0PX7Arw2HlsstTw0KPJS35UbNOW68w4Lx2jQu35IptA/viewform?usp=publish-editor"
+           target="_blank"
+           rel="noopener">
+          RSVP Now
+        </a>
       </div>
 
     </div>
+  </div>
 
-  </div><!-- /body -->
+  <!-- ─── ORNAMENT DIVIDER ─── -->
+  <div class="ornament-divider">
+    <div class="div-line"></div>
+    <span class="div-icon">✦</span>
+    <div class="div-line"></div>
+    <span class="div-icon">☕</span>
+    <div class="div-line"></div>
+    <span class="div-icon">✦</span>
+    <div class="div-line"></div>
+  </div>
 
-  <!-- FOOTER -->
+  <!-- ─── SPONSOR STRIP ─── -->
+  <div class="sponsor-strip">
+    <span class="sponsor-label">Jointly Presented By</span>
+    <div class="sponsor-logos">
+      <div class="sponsor-logo-box">
+        <img src="https://www.applyboard.com/wp-content/uploads/2020/09/ApplyBoard_Logo_Horizontal_Blue.svg"
+             alt="ApplyBoard"
+             onerror="this.outerHTML='<span style=\'font-family:Montserrat;font-weight:800;font-size:13px;color:#1E6DEB;letter-spacing:0.5px;\'>ApplyBoard</span>'"
+        />
+      </div>
+      <div class="sponsor-logos" style="align-items:center;gap:6px;">
+        <span style="font-family:Open Sans;font-size:11px;color:#8a9ab5;">&amp;</span>
+      </div>
+      <div class="sponsor-logo-box">
+        <img src="https://www.coventry.ac.uk/globalassets/media/global/logos/coventry-university-logo.png"
+             alt="Coventry University"
+             onerror="this.outerHTML='<span style=\'font-family:Montserrat;font-weight:800;font-size:11px;color:#003a70;letter-spacing:0.5px;\'>COVENTRY UNIVERSITY</span>'"
+        />
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── FOOTER ─── -->
   <div class="footer">
-    <span class="footer-text">University of Gloucestershire &nbsp;·&nbsp; Cheltenham GL50 2RH &nbsp;·&nbsp; United Kingdom</span>
-    <span class="footer-url">www.glos.ac.uk</span>
+    <span class="footer-left">For enquiries: contact@applyboard.com &nbsp;·&nbsp; www.coventry.ac.uk</span>
+    <span class="footer-right">www.applyboard.com</span>
   </div>
 
 </div>
+
 </body>
 </html>
